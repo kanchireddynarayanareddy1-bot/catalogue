@@ -20,9 +20,9 @@ pipeline {
                     def packageJson = readJSON file: 'package.json'
                     
                     // Extract the version property
-                    env.appVersion = packageJson.version
+                    appVersion = packageJson.version
                     // Print the version
-                    echo "Application Version: ${env.appVersion}"
+                    echo "Application Version: ${appVersion}"
                 }
                 
             }
