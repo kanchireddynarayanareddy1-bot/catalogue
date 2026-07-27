@@ -27,12 +27,21 @@ pipeline {
                 
             }
         }
-        stage('Test') {
+        stage('Install Dependencies') {
             steps {
                 script {
                     sh """
-                        echo 'Testing..'
-                        echo "Hello ${Course}"
+                        npm install
+                    """
+                }
+            }    
+        }
+        stage('BuildImages') {
+            steps {
+                script {
+                    sh """
+                       docker build -t catalogue:${appVersion} .
+                       docker images
                     """
                 }
             }    
