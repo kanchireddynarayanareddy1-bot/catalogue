@@ -39,6 +39,27 @@ pipeline {
                 }
             }    
         }
+        stage('UnitTest') {
+            steps {
+                script {
+                    sh """
+                        npm test
+                    """
+                }
+            }    
+        }
+        stage('sonarscan') {
+            environment{
+                def scannerHome = tool 'sonar-8.0'
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('sonar-server') {
+                        sh  "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }        
         stage('BuildImages') {
             steps {
                 // script {
