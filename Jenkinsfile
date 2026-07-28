@@ -65,7 +65,7 @@ pipeline {
                 timeout(time: 1, unit: 'HOURS') {
                     // Wait for the quality gate status
                     // abortPipeline: true will fail the Jenkins job if the quality gate is 'FAILED'
-                    def qg = waitForQualityGate abortPipeline: true 
+                    waitForQualityGate abortPipeline: true 
                 }
             }
         }          
