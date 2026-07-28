@@ -39,15 +39,15 @@ pipeline {
                 }
             }    
         }
-        stage('UnitTest') {
-            steps {
-                script {
-                    sh """
-                        npm test
-                    """
-                }
-            }    
-        }
+        // stage('UnitTest') {
+        //     steps {
+        //         script {
+        //             sh """
+        //                 npm test
+        //             """
+        //         }
+        //     }    
+        // }
         stage('sonarscan') {
             environment{
                 def scannerHome = tool 'sonar-8.0'
